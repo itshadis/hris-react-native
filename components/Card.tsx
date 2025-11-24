@@ -5,14 +5,20 @@ type Props = {
   title?: string;
   classname?: string;
   children?: ReactNode;
+  sideNode?: ReactNode;
 }
 
-const Card = ({ title, classname, children }: Props) => {
+const Card = ({ title, classname, children, sideNode }: Props) => {
   return (
     <View className={[`p-4 bg-white rounded-2xl`, classname].join(" ")}>
-      {
-        title && <Text className='text-lg font-bold'>{title}</Text>
-      }
+      <View className='flex flex-row justify-between items-center'>
+        {
+          title && <Text className='text-lg font-bold'>{title}</Text>
+        }
+        {
+          sideNode && sideNode
+        }
+      </View>
       {children}
     </View>
   )

@@ -1,15 +1,20 @@
 import UserIcon from "@/assets/images/avatar.png";
+import IdulFitriImg from "@/assets/images/baner-idul-fitri.png";
+import NatalImg from "@/assets/images/baner-natal.png";
 import Card from "@/components/Card";
 import ProgressBarChart from "@/components/charts/ProgressBar";
 import RoundIcon from "@/components/RoundIcon";
 import { Feather, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Index() {
+
+  const inset = useSafeAreaInsets()
+
   return (
-    <SafeAreaView>
+    <View style={{ marginTop: inset.top }}>
       <ScrollView className="bg-[#f0f0f0]">
         {/* Hero Section */}
         <LinearGradient
@@ -86,17 +91,17 @@ export default function Index() {
         {/* End Hero Section */}
         
         {/* Body Section */}
-        <View className="bottom-6 h-fit bg-[#f0f0f0] rounded-t-3xl p-4 gap-4">
+        <View className="bottom-6 bg-[#f0f0f0] h-fit rounded-t-3xl p-4 gap-4">
           {/* Time Off Section */}
           <Card title="Time Off Saya">
             <View className="gap-4 mt-4">
               <ProgressBarChart label="Cuti Tahunan" key="cuti-tahunan" target={12} realisasi={5} />
               <ProgressBarChart label="Cuti Sakit" key="cuti-sakit" target={12} realisasi={5} />
-              <View className="bg-[#f0f0f0] flex flex-row gap-1 rounded-xl px-3 py-2">
+              <View className="bg-[#f0f0f0] flex flex-row gap-3 rounded-xl p-3">
                 <View className="">
                   <RoundIcon
                     color="green"
-                    icon={<MaterialCommunityIcons name="airplane" size={20} color="green" />}
+                    icon={<MaterialCommunityIcons name="airplane" size={18} color="green" />}
                   />
                 </View>
                 <View>
@@ -109,14 +114,50 @@ export default function Index() {
           {/* End Time Off Section */}
 
           {/* Pengumumam Section */}
-          <Card title="Pengumuman">
+          <Card 
+            title="Pengumuman" 
+            classname="gap-4"
+            sideNode={
+              <TouchableOpacity>
+                <Text className="text-red-700 text-sm font-semibold">Lihat Semua</Text>
+              </TouchableOpacity>
+            }
+          >
+            <View className="p-4 border border-neutral-300 rounded-xl gap-2">
+              <View className="flex-row justify-between items-center">
+                <Text className="font-bold text-base">Libur Hari Raya Idul Fitri</Text>
+                <Text className="text-neutral-500 text-sm">10 April 2025</Text>
+              </View>
+              <View className="h-52 w-auto">
+                <Image source={IdulFitriImg} className="flex-1 w-full h-full" resizeMode="contain" />
+              </View>
+                <Text className="line-clamp-3 text-neutral-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore quisquam numquam, nesciunt rerum saepe facilis atque reiciendis molestias facere, dicta suscipit doloremque ratione natus repellendus minus id maxime ad maiores culpa quaerat. Ipsa voluptatibus quaerat sunt laborum sint necessitatibus fugit autem repellendus mollitia, perspiciatis, assumenda maiores asperiores, veniam possimus!</Text>
+            </View>
 
+            <View className="p-4 border border-neutral-300 rounded-xl gap-2">
+              <View className="flex-row justify-between items-center">
+                <Text className="font-bold text-base">Libur Natal</Text>
+                <Text className="text-neutral-500 text-sm">20 Desember 2025</Text>
+              </View>
+              <View className="h-52 w-auto">
+                <Image source={NatalImg} className="flex-1 w-full h-full" resizeMode="contain" />
+              </View>
+              <Text className="line-clamp-3 text-neutral-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore quisquam numquam, nesciunt rerum saepe facilis atque reiciendis molestias facere, dicta suscipit doloremque ratione natus repellendus minus id maxime ad maiores culpa quaerat. Ipsa voluptatibus quaerat sunt laborum sint necessitatibus fugit autem repellendus mollitia, perspiciatis, assumenda maiores asperiores, veniam possimus!</Text>
+            </View>
+
+            <View className="p-4 border border-neutral-300 rounded-xl gap-2">
+              <View className="flex-row justify-between items-center">
+                <Text className="font-bold text-base">Libur Tahun Baru</Text>
+                <Text className="text-neutral-500 text-sm">28 Desember 2025</Text>
+              </View>
+              <Text className="line-clamp-3 text-neutral-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore quisquam numquam, nesciunt rerum saepe facilis atque reiciendis molestias facere, dicta suscipit doloremque ratione natus repellendus minus id maxime ad maiores culpa quaerat. Ipsa voluptatibus quaerat sunt laborum sint necessitatibus fugit autem repellendus mollitia, perspiciatis, assumenda maiores asperiores, veniam possimus!</Text>
+            </View>
           </Card>
           {/* End Pengumumam Section */}
         </View>
         {/* End Body Section */}
 
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
